@@ -60,7 +60,7 @@
   
   .gradient-background-reverse-active {
     background-image: -webkit-gradient(linear, right top, left top, from(#40514e), to(#f4fefa));
-    background-image: linear-gradient(to left,#f4fefa, #40514e);
+    background-imaxge: linear-gradient(to left,#f4fefa, #40514e);
   }
   
   .gradient-text-reverse {
@@ -110,7 +110,7 @@ overflow-y: auto
 }
 
 
-  @media screen and (min-width: 400px) {
+  @media screen and (min-width: 100px) {
     .flexcontainer-inline .xs-12 {
         /* width:100%; */
         flex: 0 0 100%;
@@ -232,4 +232,10 @@ overflow-y: auto
   .block-padding{
     padding: 15px 10px;
   }
+
+  
+.frameless {
+  border: none;
+  background-color: inherit;
+}
   /*# sourceMappingURL=Base.css.map */

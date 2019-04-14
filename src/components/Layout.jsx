@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { fetchLayoutData } from "../actions/layoutActions";
 
 import NavBar from "./Navbar/index";
-import PuzzleHandler from './PuzzleHandler/index';
+import PuzzleHandler from './QuizHandler/index';
 import "../css/Layout.css"
 
 class Layout extends Component {

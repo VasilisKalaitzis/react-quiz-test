@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { TimelineMax } from "gsap/TweenMax";
 import PropTypes from "prop-types";
-// import { Grid, Cell } from "styled-css-grid";
 
+import BubbleChat from './BubbleChat';
 import "../../css/Assistant.css";
 
 class Assistant extends Component {
@@ -12,12 +12,16 @@ class Assistant extends Component {
     this.wingsTimeline = null;
     // reference to the animation
     this.wingsTimeline = null;
+    this.cubicStatus = 'idle';
   }
 
   componentDidMount() {
     //initialize cubic movement by value
     if (this.props.info.roaming===1) {
       this.cubicMovement();
+      this.cubicStatus = 'going-crazy';
+    } else{ 
+      this.cubicStatus = 'idle';
     }
     //Initializing wing movement
     this.wingsMovement();
@@ -26,6 +30,17 @@ class Assistant extends Component {
     //re-initialize cubic movement by value
     if (this.props.info.roaming===1) {
       this.cubicMovement();
+      this.cubicStatus = 'going-crazy';
+    } else{ 
+      this.cubicStatus = 'idle';
+    }
+  }
+
+  getTips(){
+    if (this.props.info.tips !== null) {
+      return this.props.info.tips 
+    } else {
+      return this.props.info.persistent_tips;
     }
   }
 
@@ -36,9 +51,9 @@ class Assistant extends Component {
       }
     };
 
-    return (
+        return (
       <div
-        className="cubic-container"
+        className={"cubic-container cubic-container-" + this.cubicStatus}
         ref={c => (this.cubicContainer = c)}
         style={styles.cubicContainerStyle}
       >
@@ -53,6 +68,9 @@ class Assistant extends Component {
             {/* <Cell left={1} top={1} width={4} height={1}> */}
               {/* <BubbleChat msg={this.props.info.tips} /> */}
             {/* </Cell> */}
+            <div className="cubic-chat">
+              <BubbleChat tips={this.getTips()}/>
+            </div>
               <div className="cubic-body" />
               <div
                 className="cubic-left-wing"
@@ -113,6 +131,8 @@ Assistant.defaultProps = {
   info: {
     visibility:1,
     roaming:0,
+    tips: null,
+    persistent_tips: null
   }
 };
 

@@ -10,14 +10,11 @@ import "./css/transitions.css";
 import "./css/fonts.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
-  faCog,
-  faUserCircle,
-  faHeart,
   faStar,
-  faSearch
+  faHourglassStart
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faCog, faUserCircle, faHeart, faStar, faSearch);
+library.add(faStar,faHourglassStart);
 
 class App extends Component {
   render() {

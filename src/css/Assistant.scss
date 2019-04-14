@@ -1,10 +1,12 @@
 .cubic-container {
-    pointer-events: none;
     position: relative;
     height: 100%;
     width: 100%;
     min-height: 200px;
     z-index: 999;
+  }
+  .cubic-container-going-crazy {
+    pointer-events: none;
   }
   
   .cubic-grid {
@@ -25,6 +27,9 @@
     position: fixed;
   }
   
+  .cubic-chat {
+    grid-area: chat-box;
+  }
   .cubic-body {
     grid-area: body-area;
     background: whitesmoke;

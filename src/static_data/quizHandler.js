@@ -6,20 +6,24 @@ import Assistant from "../components/Assistant";
 // dead = not initialized
 // active = during a question
 // paused = during a question but paused
+// defeat = player lost
 
 const puzzleHandler = {
     game_status: 'dead',
+    correct_answers: 0,
+    current_score: 0,
     assistant : {
         visibility: 1,
-        roaming:1,
-        position: {top:'80%',left:'40%'},
-        tips: null
+        roaming:0,
+        position: {top:'60%'},
+        tips: null,
+        persistent_tips: 'Click on me to <b> start the game </b>'
       },
       questionBox: {
-
+        active:1
       },
-      optionBox: {
-          
+      informationBox: {
+        active:1
       }
   };
   
