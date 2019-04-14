@@ -1,0 +1,47 @@
+.sidebar-frame {
+  min-width: 200px;
+  position: absolute;
+  opacity: 0.9;
+  border-bottom: 1px solid #11999e;
+  z-index: 999;
+}
+
+.sidebar-frame-left {
+  left: 0px;
+  border-radius: 0 0 0.8em 0;
+  -webkit-box-shadow: 5px 13px 17px -11px #40514e;
+  box-shadow: 5px 13px 17px -11px #40514e;
+}
+
+.sidebar-frame-right {
+  right: 0px;
+  border-radius: 0 0 0 0.8em;
+  -webkit-box-shadow: -5px 13px 17px -11px #40514e;
+  box-shadow: -5px 13px 17px -11px #40514e;
+}
+
+.sidebar-frame-content {
+  min-height: 350px;
+  padding: 15px;
+}
+
+.sidebar-frame ul {
+  padding: 10px;
+}
+
+.sidebar-frame ul li {
+  padding: 15px 10px;
+  border-bottom: 0.02px solid #f4fefa;
+  opacity: 0.9;
+  display: block;
+  cursor: pointer;
+}
+
+.sidebar-button {
+  min-width: 50px;
+  height: 50px;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+/*# sourceMappingURL=Sidebar.css.map */
