@@ -194,4 +194,37 @@
   transition: opacity 500ms, transform 500ms;
   transition: opacity 500ms, transform 500ms, -webkit-transform 500ms;
 }
+
+/* slide down normally */
+.slide-up-enter {
+  opacity: 0;
+  -webkit-transform: translateY(300px);
+  transform: translateY(300px);
+}
+
+.slide-up-enter-active {
+  opacity: 0.9;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  -webkit-transition: opacity 1500ms, -webkit-transform 1500ms;
+  transition: opacity 1500ms, -webkit-transform 1500ms;
+  transition: opacity 1500ms, transform 1500ms;
+  transition: opacity 1500ms, transform 1500ms, -webkit-transform 1500ms;
+}
+
+.slide-up-exit {
+  opacity: 0.9;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+
+.slide-up-exit-active {
+  opacity: 0;
+  -webkit-transform: translateY(300px);
+  transform: translateY(300px);
+  -webkit-transition: opacity 1500ms, -webkit-transform 1500ms;
+  transition: opacity 1500ms, -webkit-transform 1500ms;
+  transition: opacity 1500ms, transform 1500ms;
+  transition: opacity 1500ms, transform 1500ms, -webkit-transform 1500ms;
+}
 /*# sourceMappingURL=transitions.css.map */

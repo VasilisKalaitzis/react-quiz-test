@@ -163,6 +163,7 @@
   }
   
   /* slide down normally */
+    $slideDownTime : 500ms;
   .slide-down-enter {
     opacity: 0;
     -webkit-transform: translateY(-300px);
@@ -173,10 +174,10 @@
     opacity: 0.9;
     -webkit-transform: translateY(0);
             transform: translateY(0);
-    -webkit-transition: opacity 500ms, -webkit-transform 500ms;
-    transition: opacity 500ms, -webkit-transform 500ms;
-    transition: opacity 500ms, transform 500ms;
-    transition: opacity 500ms, transform 500ms, -webkit-transform 500ms;
+    -webkit-transition: opacity $slideDownTime, -webkit-transform $slideDownTime;
+    transition: opacity $slideDownTime, -webkit-transform $slideDownTime;
+    transition: opacity $slideDownTime, transform $slideDownTime;
+    transition: opacity $slideDownTime, transform $slideDownTime, -webkit-transform $slideDownTime;
   }
   
   .slide-down-exit {
@@ -189,9 +190,45 @@
     opacity: 0;
     -webkit-transform: translateY(-300px);
             transform: translateY(-300px);
-    -webkit-transition: opacity 500ms, -webkit-transform 500ms;
-    transition: opacity 500ms, -webkit-transform 500ms;
-    transition: opacity 500ms, transform 500ms;
-    transition: opacity 500ms, transform 500ms, -webkit-transform 500ms;
+    -webkit-transition: opacity $slideDownTime, -webkit-transform $slideDownTime;
+    transition: opacity $slideDownTime, -webkit-transform $slideDownTime;
+    transition: opacity $slideDownTime, transform $slideDownTime;
+    transition: opacity $slideDownTime, transform $slideDownTime, -webkit-transform $slideDownTime;
   }
+
+
+  // slide up normally
+    /* slide down normally */
+    $slideUpTime : 1500ms;
+    .slide-up-enter {
+      opacity: 0;
+      -webkit-transform: translateY(300px);
+              transform: translateY(300px);
+    }
+    
+    .slide-up-enter-active {
+      opacity: 0.9;
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      -webkit-transition: opacity $slideUpTime, -webkit-transform $slideUpTime;
+      transition: opacity $slideUpTime, -webkit-transform $slideUpTime;
+      transition: opacity $slideUpTime, transform $slideUpTime;
+      transition: opacity $slideUpTime, transform $slideUpTime, -webkit-transform $slideUpTime;
+    }
+    
+    .slide-up-exit {
+      opacity: 0.9;
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+    }
+    
+    .slide-up-exit-active {
+      opacity: 0;
+      -webkit-transform: translateY(300px);
+              transform: translateY(300px);
+      -webkit-transition: opacity $slideUpTime, -webkit-transform $slideUpTime;
+      transition: opacity $slideUpTime, -webkit-transform $slideUpTime;
+      transition: opacity $slideUpTime, transform $slideUpTime;
+      transition: opacity $slideUpTime, transform $slideUpTime, -webkit-transform $slideUpTime;
+    }
   /*# sourceMappingURL=transitions.css.map */

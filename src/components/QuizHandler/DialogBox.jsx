@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import '../../css/DialogBox.css'
 
 class DialogBox extends Component {
   componentWillMount() {
-    // this.props.fetchMovieDetails(this.props.url, this.props.movieId);
   }
 
   renderRow(row) {
@@ -31,20 +30,24 @@ class DialogBox extends Component {
         </ul>
         <div vallign='bottom' className='dialog-footer flexcontainer-fit'>
         {this.props.footer!== undefined ? this.props.footer.map(row=>{
-                return <span key={'footer' + row.text} className='flexcontainer-block'>{row.text}</span>;}
+                return <span key={'footer' + row.text} className='flexcontainer-block action-button'>{row.text}</span>;}
             ) : null}
         </div>
       </div>
     );
   }
 }
-// PuzzleHandler.defaultProps = {
-//   movieId: null
-// };
+DialogBox.defaultProps = {
+  header: null,
+  body: [],
+  footer: []
+};
 
-// PuzzleHandler.propTypes = {
-//   movieId: PropTypes.number
-// };
+DialogBox.propTypes = {
+  header: PropTypes.string,
+  body: PropTypes.array,
+  footer: PropTypes.array
+};
 // const mapStateToProps = state => ({
 //   movieDetails: state.movieReducer.movieDetails
 // });

@@ -12,16 +12,12 @@ class Assistant extends Component {
     this.wingsTimeline = null;
     // reference to the animation
     this.wingsTimeline = null;
-    this.cubicStatus = 'idle';
   }
 
   componentDidMount() {
     //initialize cubic movement by value
     if (this.props.info.roaming===1) {
       this.cubicMovement();
-      this.cubicStatus = 'going-crazy';
-    } else{ 
-      this.cubicStatus = 'idle';
     }
     //Initializing wing movement
     this.wingsMovement();
@@ -30,9 +26,14 @@ class Assistant extends Component {
     //re-initialize cubic movement by value
     if (this.props.info.roaming===1) {
       this.cubicMovement();
-      this.cubicStatus = 'going-crazy';
-    } else{ 
-      this.cubicStatus = 'idle';
+    }
+  }
+
+  getCubicClass() {
+    if (this.props.info.roaming===1) {
+      return 'going-crazy';
+    } else { 
+      return 'idle';
     }
   }
 
@@ -51,9 +52,11 @@ class Assistant extends Component {
       }
     };
 
-        return (
+    const {onTickle} = this.props
+
+    return (
       <div
-        className={"cubic-container cubic-container-" + this.cubicStatus}
+        className={"cubic-container cubic-container-" + this.getCubicClass()}
         ref={c => (this.cubicContainer = c)}
         style={styles.cubicContainerStyle}
       >
@@ -61,7 +64,7 @@ class Assistant extends Component {
           className="cubic"
           ref={c => (this.cubic = c)}
           style={this.props.info.position}
-          click="giveFeedback"
+          onClick={() => onTickle(this.props.feedback)}
         >
           <div className="cubic-grid"
           >

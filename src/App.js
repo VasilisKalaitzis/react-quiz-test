@@ -11,10 +11,12 @@ import "./css/fonts.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faStar,
-  faHourglassStart
+  faHourglassStart,
+  faTrophy,
+  faLevelUpAlt
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faStar,faHourglassStart);
+library.add(faStar,faHourglassStart,faTrophy,faLevelUpAlt);
 
 class App extends Component {
   render() {

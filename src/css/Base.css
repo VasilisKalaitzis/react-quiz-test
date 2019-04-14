@@ -110,8 +110,16 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
-  height: auto;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   overflow-y: auto;
+}
+
+.flex-6 {
+  padding: 10px 0px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 50%;
+          flex: 0 0 50%;
 }
 
 @media screen and (min-width: 100px) {
@@ -180,7 +188,6 @@
 }
 
 .normal-fa-fonts {
-  margin: 5px;
   font-size: 40px;
 }
 

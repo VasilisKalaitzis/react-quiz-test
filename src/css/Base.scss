@@ -104,11 +104,14 @@
 .flexcontainer-inline {
     display: inline-flex;
     flex-flow: row wrap;
-    
-height: auto;
-overflow-y: auto
+    flex-wrap:wrap;
+    overflow-y: auto
 }
 
+.flex-6 {
+  padding: 10px 0px;
+  flex: 0 0 50%
+}
 
   @media screen and (min-width: 100px) {
     .flexcontainer-inline .xs-12 {
@@ -168,7 +171,6 @@ overflow-y: auto
   }
   
   .normal-fa-fonts {
-    margin: 5px;
     font-size: 40px;
   }
   
