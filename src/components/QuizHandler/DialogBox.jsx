@@ -2,36 +2,80 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import '../../css/DialogBox.css'
-
 class DialogBox extends Component {
-  componentWillMount() {
+  constructor(props) {
+    super(props);
+
+    this.elementRefs = {};
   }
+  componentWillMount() {}
+
+  handleSubmit = name => {
+    let value = this[`textInput${name}`].value;
+    this[`textInput${name}`].value = "";
+    return value;
+  };
 
   renderRow(row) {
+    const { onTickle } = this.props;
+
     switch (row.type) {
-    case 'textbox': 
-      return <input key='dialog_body_textbox' type='text'></input>;
-    default:
-      return <li key={'dialog_body_' + row.text}>{row.text}</li>
+      case "textbox":
+        return (
+          <input
+            type="text"
+            ref={input => {
+              this[`textInput${row.name}`] = input;
+            }}
+          />
+        );
+      case "submit":
+        return (
+          <div
+            className="flexcontainer-block action-button"
+            onClick={() =>
+              onTickle({
+                action: row.action,
+                text: this.handleSubmit(row.target_name)
+              })
+            }
+          >
+            {row.text}
+          </div>
+        );
+      default:
+        return <span>{row.text}</span>;
     }
   }
   render() {
     return (
-      <div className={'dialog-box-grid container-margin ' + this.props.containerClass}>
-        <div className='dialog-header'>
-            <span>{this.props.header}</span>
+      <div
+        className={
+          "dialog-box-grid container-margin " + this.props.container_class
+        }
+      >
+        <div className="dialog-header">
+          <span>{this.props.header}</span>
         </div>
-        <ul className='dialog-body'>
-            {this.props.body!== undefined ? this.props.body.map(row=>{
-                return this.renderRow(row);
-            }
-            ) : null}
+        <ul className="dialog-body">
+          {this.props.body !== undefined
+            ? this.props.body.map(row => {
+                return (
+                  <li key={"dialog_body_" + row.text}>{this.renderRow(row)}</li>
+                );
+              })
+            : null}
         </ul>
-        <div vallign='bottom' className='dialog-footer flexcontainer-fit'>
-        {this.props.footer!== undefined ? this.props.footer.map(row=>{
-                return <span key={'footer' + row.text} className='flexcontainer-block action-button'>{row.text}</span>;}
-            ) : null}
+        <div vallign="bottom" className="dialog-footer flexcontainer-fit">
+          {this.props.footer !== undefined
+            ? this.props.footer.map(row => {
+                return (
+                  <React.Fragment key={"dialog_body_" + row.text}>
+                    {this.renderRow(row)}
+                  </React.Fragment>
+                );
+              })
+            : null}
         </div>
       </div>
     );
@@ -53,5 +97,5 @@ DialogBox.propTypes = {
 // });
 export default connect(
   null,
- null
+  null
 )(DialogBox);

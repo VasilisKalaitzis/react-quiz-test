@@ -19,8 +19,8 @@
 }
 
 .shadow-pallete1 {
-  -webkit-box-shadow: 0px 5px 9px 6px #F4FEFB;
-  box-shadow: 0px 5px 9px 6px #F4FEFB;
+  -webkit-box-shadow: 0px 5px 9px 6px #f4fefb;
+  box-shadow: 0px 5px 9px 6px #f4fefb;
 }
 
 .shadow-pallete2 {
@@ -257,5 +257,9 @@
 .frameless {
   border: none;
   background-color: inherit;
+}
+
+.inline-block {
+  display: inline-block;
 }
 /*# sourceMappingURL=Base.css.map */

@@ -16,7 +16,7 @@ import {
   faLevelUpAlt
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faStar,faHourglassStart,faTrophy,faLevelUpAlt);
+library.add(faStar, faHourglassStart, faTrophy, faLevelUpAlt);
 
 class App extends Component {
   render() {

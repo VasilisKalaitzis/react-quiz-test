@@ -1,0 +1,13 @@
+.info-block {
+  display: inline-block;
+  width: 80px;
+  text-align: left;
+}
+
+.info-text {
+  display: inline-block;
+  width: 45px;
+  text-align: center;
+  padding: 0px 10px;
+}
+/*# sourceMappingURL=QuizHandler.css.map */

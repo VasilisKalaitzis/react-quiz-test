@@ -1,57 +1,56 @@
 .dialog-box {
-    text-align: center;
-    vertical-align: middle;
-    border-radius: 0.3em;
-    min-height: 300px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 0.3em;
+  min-height: 300px;
 }
 .dialog-header {
   grid-area: header;
-    padding: 1rem 0rem;
-    margin-bottom: 0;
-    color: inherit;
-    border-bottom: 1px solid #ebebeb;
-    border-top-left-radius: calc(0.3rem - 1px);
-    border-top-right-radius: calc(0.3rem - 1px);
-  }
-  .dialog-body {
-    grid-area: body;
-  }
-  .dialog-footer{
-    grid-area: footer;
-    vertical-align: bottom;
-    
-    padding: 1rem 0rem;
+  padding: 1rem 0rem;
+  margin-bottom: 0;
+  color: inherit;
+  border-bottom: 1px solid #ebebeb;
+  border-top-left-radius: calc(0.3rem - 1px);
+  border-top-right-radius: calc(0.3rem - 1px);
+}
+.dialog-body {
+  grid-area: body;
+}
+.dialog-footer {
+  grid-area: footer;
+  vertical-align: bottom;
 
-  }
-  .dialog-row {
-    padding: 0px 5px 0px 5px;
-    margin-top: 15px;
-    font-size: 1em;
-  }
-  .action-button {
-    cursor: pointer;
-  }
-  .unframed-box {
-    color: white;
-  }
+  padding: 1rem 0rem;
+}
+.dialog-row {
+  padding: 0px 5px 0px 5px;
+  margin-top: 15px;
+  font-size: 1em;
+}
+.action-button {
+  cursor: pointer;
+}
+.unframed-box {
+  color: white;
+}
 
-  .dialog-box-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas: 
-    'header'
-    'body'
-    'footer';
-    grid-gap: 0px;
-    padding: 0px;
-  }
-  .dialog-box input {
-    text-align: center;
-    color:inherit;
-    font-size: inherit;
-    background-color: inherit;
-    border-width: 0.5px 0.5px 1px 1px;
-    border-top-left-radius: calc(0.3rem - 1px);
-    border-top-right-radius: calc(0.3rem - 1px);
-  }
+.dialog-box-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "body"
+    "footer";
+  grid-gap: 0px;
+  padding: 0px;
+}
+.dialog-box input {
+  text-align: center;
+  color: inherit;
+  font-size: inherit;
+  background-color: inherit;
+  border-width: 0.5px 0.5px 1px 1px;
+  border-top-left-radius: calc(0.3rem - 1px);
+  border-top-right-radius: calc(0.3rem - 1px);
+}

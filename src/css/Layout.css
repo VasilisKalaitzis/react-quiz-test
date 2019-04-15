@@ -12,9 +12,9 @@
   display: grid;
   -ms-grid-columns: auto 1fr auto;
       grid-template-columns: auto 1fr auto;
-  -ms-grid-rows: auto 3fr 1fr auto;
-      grid-template-rows: auto 3fr 1fr auto;
-      grid-template-areas: 'leftbar header rightbar' 'content content content' 'footer footer footer';
+  -ms-grid-rows: auto 1fr auto;
+      grid-template-rows: auto 1fr auto;
+      grid-template-areas: "leftbar header rightbar" "content content content" "footer footer footer";
   grid-gap: 0px;
   padding: 0px;
 }
@@ -49,7 +49,11 @@
   -ms-grid-column: 1;
   -ms-grid-column-span: 3;
   grid-area: content;
-  height: auto;
+  height: -webkit-fill-available;
   overflow-y: auto;
+}
+
+.block-width {
+  max-width: 653.5px;
 }
 /*# sourceMappingURL=Layout.css.map */

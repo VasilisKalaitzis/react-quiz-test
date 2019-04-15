@@ -206,10 +206,10 @@
   opacity: 0.9;
   -webkit-transform: translateY(0);
   transform: translateY(0);
-  -webkit-transition: opacity 1500ms, -webkit-transform 1500ms;
-  transition: opacity 1500ms, -webkit-transform 1500ms;
-  transition: opacity 1500ms, transform 1500ms;
-  transition: opacity 1500ms, transform 1500ms, -webkit-transform 1500ms;
+  -webkit-transition: opacity 700ms, -webkit-transform 700ms;
+  transition: opacity 700ms, -webkit-transform 700ms;
+  transition: opacity 700ms, transform 700ms;
+  transition: opacity 700ms, transform 700ms, -webkit-transform 700ms;
 }
 
 .slide-up-exit {
@@ -222,9 +222,9 @@
   opacity: 0;
   -webkit-transform: translateY(300px);
   transform: translateY(300px);
-  -webkit-transition: opacity 1500ms, -webkit-transform 1500ms;
-  transition: opacity 1500ms, -webkit-transform 1500ms;
-  transition: opacity 1500ms, transform 1500ms;
-  transition: opacity 1500ms, transform 1500ms, -webkit-transform 1500ms;
+  -webkit-transition: opacity 700ms, -webkit-transform 700ms;
+  transition: opacity 700ms, -webkit-transform 700ms;
+  transition: opacity 700ms, transform 700ms;
+  transition: opacity 700ms, transform 700ms, -webkit-transform 700ms;
 }
 /*# sourceMappingURL=transitions.css.map */

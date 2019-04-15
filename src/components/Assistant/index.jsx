@@ -2,21 +2,26 @@ import React, { Component } from "react";
 import { TimelineMax } from "gsap/TweenMax";
 import PropTypes from "prop-types";
 
-import BubbleChat from './BubbleChat';
+import BubbleChat from "./BubbleChat";
 import "../../css/Assistant.css";
 
 class Assistant extends Component {
   constructor(props) {
     super(props);
     // reference to the DOM node
-    this.wingsTimeline = null;
+    this.cubicTimeline = null;
     // reference to the animation
     this.wingsTimeline = null;
   }
 
+  componentWillMount() {
+    this.tipsTimer = null;
+    this.temporaryTips = null;
+  }
+
   componentDidMount() {
     //initialize cubic movement by value
-    if (this.props.info.roaming===1) {
+    if (this.props.info.roaming === 1 && this.cubicTimeline === null) {
       this.cubicMovement();
     }
     //Initializing wing movement
@@ -24,22 +29,37 @@ class Assistant extends Component {
   }
   componentDidUpdate() {
     //re-initialize cubic movement by value
-    if (this.props.info.roaming===1) {
+    if (this.props.info.roaming === 1 && this.cubicTimeline === null) {
       this.cubicMovement();
     }
+
+    //set timer to clear the normal tips
+    // if (this.props.info.tips !== null) {
+    //   this.temporaryTips = this.props.info.tips;
+    //   clearTimeout(this.tipsTimer);
+    //   this.tipsTimer = setTimeout(this.clearTips, 2000);
+    // }
+  }
+
+  // clearTips() {
+  //   this.temporaryTips = null;
+  // }
+
+  componentWillUnmount() {
+    clearTimeout(this.tipsTimer);
   }
 
   getCubicClass() {
-    if (this.props.info.roaming===1) {
-      return 'going-crazy';
-    } else { 
-      return 'idle';
+    if (this.props.info.roaming === 1) {
+      return "going-crazy";
+    } else {
+      return "idle";
     }
   }
 
-  getTips(){
+  getTips() {
     if (this.props.info.tips !== null) {
-      return this.props.info.tips 
+      return this.props.info.tips;
     } else {
       return this.props.info.persistent_tips;
     }
@@ -52,7 +72,7 @@ class Assistant extends Component {
       }
     };
 
-    const {onTickle} = this.props
+    const { onTickle } = this.props;
 
     return (
       <div
@@ -66,23 +86,19 @@ class Assistant extends Component {
           style={this.props.info.position}
           onClick={() => onTickle(this.props.feedback)}
         >
-          <div className="cubic-grid"
-          >
+          <div className="cubic-grid">
             {/* <Cell left={1} top={1} width={4} height={1}> */}
-              {/* <BubbleChat msg={this.props.info.tips} /> */}
+            {/* <BubbleChat msg={this.props.info.tips} /> */}
             {/* </Cell> */}
             <div className="cubic-chat">
-              <BubbleChat tips={this.getTips()}/>
+              <BubbleChat tips={this.getTips()} />
             </div>
-              <div className="cubic-body" />
-              <div
-                className="cubic-left-wing"
-                ref={c => (this.cubicWing1 = c)}
-              />
-              <div
-                className="cubic-right-wing"
-                ref={c => (this.cubicWing2 = c)}
-              />
+            <div className="cubic-body" />
+            <div className="cubic-left-wing" ref={c => (this.cubicWing1 = c)} />
+            <div
+              className="cubic-right-wing"
+              ref={c => (this.cubicWing2 = c)}
+            />
           </div>
         </div>
       </div>
@@ -90,14 +106,15 @@ class Assistant extends Component {
   }
 
   cubicMovement() {
-    const {roaming} = this.props.info;
-    const { cubicContainer, cubic} = this;
+    const { roaming } = this.props.info;
+    const { cubicContainer, cubic } = this;
 
     this.cubicTimeline = new TimelineMax({
-      onComplete: () => roaming===1 ?this.cubicMovement() : this.pause
+      onComplete: () =>
+        roaming === 1 ? this.cubicMovement() : (this.cubicTimeline = null)
     });
 
-    this.cubicTimeline.to(cubic, 2, {
+    this.cubicTimeline.to(cubic, 1.5, {
       top: this.randomHeight(cubicContainer),
       left: this.randomWidth(cubicContainer),
       ease: "Back.easeOut"
@@ -120,20 +137,20 @@ class Assistant extends Component {
 
   randomHeight(container) {
     var height = container.offsetHeight;
-    var randomHeight = Math.floor(Math.random() * (height - 20));
+    var randomHeight = 200 + Math.floor(Math.random() * (height - 20));
     return randomHeight;
   }
   randomWidth(container) {
     var width = container.offsetWidth;
-    var randomWidth = Math.floor(Math.random() * (width - 20));
+    var randomWidth = Math.floor(Math.random() * (width - 70));
     return randomWidth;
   }
 }
 
 Assistant.defaultProps = {
   info: {
-    visibility:1,
-    roaming:0,
+    visibility: 1,
+    roaming: 0,
     tips: null,
     persistent_tips: null
   }
