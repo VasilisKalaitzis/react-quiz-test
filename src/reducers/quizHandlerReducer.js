@@ -16,9 +16,11 @@ export default function(state = initialState, action) {
       let quizHandlerStaticData = action.payload.quizHandlerStaticData;
 
       // if highscore has already been set, add it
-      quizHandlerStaticData.highscore = parseInt(
-        localStorage.getItem("react-quiz-highscore-vk")
-      );
+      if (localStorage.getItem("react-quiz-highscore-vk") != undefined) {
+        quizHandlerStaticData.highscore = parseInt(
+          localStorage.getItem("react-quiz-highscore-vk")
+        );
+      }
       return quizHandlerStaticData;
     case START_THE_QUIZ:
       return {
