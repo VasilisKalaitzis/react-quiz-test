@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import { fetchLayoutData } from "../actions/layoutActions";
 
 import NavBar from "./Navbar/index";
-import PuzzleHandler from './QuizHandler/index';
-import "../css/Layout.css"
+import PuzzleHandler from "./QuizHandler/index";
+import "../css/Layout.css";
 
 class Layout extends Component {
   componentWillMount() {
@@ -15,24 +15,21 @@ class Layout extends Component {
     return obj !== undefined ? obj[index] : null;
   }
   render() {
+    // Render the main Layout
     return (
       <div className="main-layout-grid">
-        <div className='navbar-container'>
-            <NavBar key="navbar" info={this.props.layout.navbar} />
+        <div className="navbar-container">
+          <NavBar key="navbar" info={this.props.layout.navbar} />
         </div>
-        <div className='right-sidebar-container'></div>
-        
-        {/* Main Container */}
-        <div className='main-container'>
-          <PuzzleHandler></PuzzleHandler>
+        <div className="right-sidebar-container" />
+
+        {/* Main Container containing the quiz view and mechanics */}
+        <div className="main-container">
+          <PuzzleHandler />
         </div>
 
-        <div className='footer-container'>
-</div>
+        <div className="footer-container" />
       </div>
-
-      
-
     );
   }
 }
