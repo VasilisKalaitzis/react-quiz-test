@@ -3,7 +3,8 @@ import {
   START_THE_QUIZ,
   UPDATE_QUIZ_PROPERTY,
   FETCH_NEW_QUESTION,
-  MODIFY_SCORE
+  MODIFY_SCORE,
+  END_THE_QUIZ
 } from "./types";
 
 import quizHandlerStaticData from "../static_data/quizHandler";
@@ -48,10 +49,15 @@ export const fetchNewQuestion = () => (dispatch, getState) => {
     .then(data => {
       if (cached_questions[data[0].id] != 1) {
         cached_questions[data[0].id] = 1;
+
+        // Remove all html characters
+        data[0].answer = data[0].answer.replace(/(<([^>]+)>)/gi, "");
+
         dispatch({
           type: FETCH_NEW_QUESTION,
           payload: {
-            current_question: data[0]
+            current_question: data[0],
+            cached_questions: cached_questions
           }
         });
       } else {
@@ -67,7 +73,9 @@ export const submitAnswer = answer => (dispatch, getState) => {
     max_answers
   } = getState().quizHandlerReducer;
 
-  //pull from server only if the client doesn't have it
+  // strip HTML from the given answer
+  answer = answer.replace(/(<([^>]+)>)/gi, "");
+
   if (
     answer.toLowerCase() === current_question.answer.toLowerCase() &&
     correct_answers < max_answers
@@ -83,15 +91,30 @@ export const submitAnswer = answer => (dispatch, getState) => {
     dispatch(fetchNewQuestion());
   } else if (correct_answers >= max_answers) {
     // show win message
-    dispatch(fetchNewQuestion());
+    dispatch(endTheQuiz("victory", "Congratulations! <br> You won the game!"));
   } else {
-    dispatch({
-      type: MODIFY_SCORE,
-      payload: {
-        modify_type: "increase"
-      }
-    });
     // show lose message
-    dispatch(fetchNewQuestion());
+    dispatch(
+      endTheQuiz(
+        "defeat",
+        "GAME OVER! <br>'" +
+          answer +
+          "' is wrong. \n The correct answer is '" +
+          current_question.answer +
+          "'"
+      )
+    );
   }
+};
+
+// Finish the quiz
+// result_text is the text that will be displayed in the end
+export const endTheQuiz = (result, text) => dispatch => {
+  dispatch({
+    type: END_THE_QUIZ,
+    payload: {
+      game_text: text,
+      game_result: result
+    }
+  });
 };

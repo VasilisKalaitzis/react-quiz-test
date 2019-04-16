@@ -3,7 +3,8 @@ import {
   START_THE_QUIZ,
   UPDATE_QUIZ_PROPERTY,
   FETCH_NEW_QUESTION,
-  MODIFY_SCORE
+  MODIFY_SCORE,
+  END_THE_QUIZ
 } from "../actions/types";
 
 const initialState = {};
@@ -15,8 +16,8 @@ export default function(state = initialState, action) {
       let quizHandlerStaticData = action.payload.quizHandlerStaticData;
 
       // if highscore has already been set, add it
-      quizHandlerStaticData.highscore = localStorage.getItem(
-        "react-quiz-highscore-vk"
+      quizHandlerStaticData.highscore = parseInt(
+        localStorage.getItem("react-quiz-highscore-vk")
       );
       return quizHandlerStaticData;
     case START_THE_QUIZ:
@@ -36,9 +37,10 @@ export default function(state = initialState, action) {
     case FETCH_NEW_QUESTION:
       return {
         ...state,
-        current_question: action.payload.current_question,
         time_spent: 0,
         game_status: "active",
+        current_question: action.payload.current_question,
+        cached_questions: action.payload.cached_questions,
         assistant: {
           ...state.assistant,
           persistent_tips: action.payload.current_question.category.title
@@ -62,6 +64,21 @@ export default function(state = initialState, action) {
         correct_answers: correctAnswers,
         current_score: currentScore,
         highscore: highscore
+      };
+    case END_THE_QUIZ:
+      let tips;
+      action.payload.game_result == "victory"
+        ? (tips = "Bravo!")
+        : (tips = "You will do it better next time!");
+      return {
+        ...state,
+        game_status: "finished",
+        game_result: action.payload.game_result,
+        game_text: action.payload.game_text,
+        assistant: {
+          ...state.assistant,
+          persistent_tips: tips
+        }
       };
     default:
       return state;

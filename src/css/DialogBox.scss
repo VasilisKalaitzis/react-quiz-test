@@ -3,9 +3,20 @@
   vertical-align: middle;
   border-radius: 0.3em;
   min-height: 300px;
+
+  input {
+    text-align: center;
+    color: inherit;
+    font-size: inherit;
+    background-color: inherit;
+    width: 85%;
+    border-width: 0.5px 0.5px 1px 1px;
+    border-top-left-radius: calc(0.3rem - 1px);
+    border-top-right-radius: calc(0.3rem - 1px);
+  }
 }
 .dialog-header {
-  grid-area: header;
+  grid-area: header-area;
   padding: 1rem 0rem;
   margin-bottom: 0;
   color: inherit;
@@ -14,10 +25,10 @@
   border-top-right-radius: calc(0.3rem - 1px);
 }
 .dialog-body {
-  grid-area: body;
+  grid-area: body-area;
 }
 .dialog-footer {
-  grid-area: footer;
+  grid-area: footer-area;
   vertical-align: bottom;
 
   padding: 1rem 0rem;
@@ -39,18 +50,9 @@
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
   grid-template-areas:
-    "header"
-    "body"
-    "footer";
+    "header-area"
+    "body-area"
+    "footer-area";
   grid-gap: 0px;
   padding: 0px;
-}
-.dialog-box input {
-  text-align: center;
-  color: inherit;
-  font-size: inherit;
-  background-color: inherit;
-  border-width: 0.5px 0.5px 1px 1px;
-  border-top-left-radius: calc(0.3rem - 1px);
-  border-top-right-radius: calc(0.3rem - 1px);
 }

@@ -1,11 +1,41 @@
 .info-block {
   display: inline-block;
-  width: 80px;
-  text-align: left;
+  text-align: center;
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .info-text {
   display: inline-block;
-  width: 45px;
+  min-width: 45px;
   text-align: center;
   padding: 0px 10px;
+}
+.quiz-handler-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "body-area"
+    "information-area";
+  grid-gap: 0px;
+  padding: 0px;
+  width: auto;
+  margin: auto;
+}
+.question-box {
+  grid-area: body-area;
+}
+.result-box {
+  grid-area: body-area;
+}
+.information-box {
+  grid-area: information-area;
+}
+
+@media screen and (max-width: 400px) {
+  .info-block {
+    max-width: 150px;
+  }
 }

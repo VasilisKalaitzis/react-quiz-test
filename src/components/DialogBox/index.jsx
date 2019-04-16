@@ -23,6 +23,7 @@ class DialogBox extends Component {
       case "textbox":
         return (
           <input
+            className="flexcontainer-block"
             type="text"
             ref={input => {
               this[`textInput${row.name}`] = input;
@@ -43,6 +44,19 @@ class DialogBox extends Component {
             {row.text}
           </div>
         );
+      case "callback":
+        return (
+          <div
+            className="flexcontainer-block action-button"
+            onClick={() =>
+              onTickle({
+                action: row.action
+              })
+            }
+          >
+            {row.text}
+          </div>
+        );
       default:
         return <span>{row.text}</span>;
     }
@@ -55,9 +69,9 @@ class DialogBox extends Component {
         }
       >
         <div className="dialog-header">
-          <span>{this.props.header}</span>
+          <span dangerouslySetInnerHTML={{ __html: this.props.header }} />
         </div>
-        <ul className="dialog-body">
+        <ul className="dialog-body flexcontainer-fit">
           {this.props.body !== undefined
             ? this.props.body.map(row => {
                 return (

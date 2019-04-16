@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { updateQuizProperty } from "../../actions/quizHandlerActions";
+import {
+  updateQuizProperty,
+  endTheQuiz
+} from "../../actions/quizHandlerActions";
 
 class QuizInformation extends Component {
   constructor() {
@@ -10,13 +13,13 @@ class QuizInformation extends Component {
     this.countdown = null;
   }
   componentWillMount() {
-    this.startTimer();
+    this.handleTimer();
   }
   componentWillUnmount() {
     this.stopTimer();
   }
 
-  startTimer() {
+  handleTimer() {
     // every 1 second check and update count
     if (
       this.props.time_spent < this.props.timeout &&
@@ -24,8 +27,10 @@ class QuizInformation extends Component {
     ) {
       let newTimeSpent = this.props.time_spent + 1;
       this.props.updateQuizProperty("time_spent", newTimeSpent);
+    } else {
+      // this.props.endTheQuiz("defeat", "Game over! <br> You ran out of time!");
     }
-    this.countdown = setTimeout(() => this.startTimer(), 1000);
+    this.countdown = setTimeout(() => this.handleTimer(), 1000);
   }
   stopTimer() {
     clearTimeout(this.countdown);
@@ -53,32 +58,32 @@ class QuizInformation extends Component {
         <div className="dialog-header">
           <div className="flexcontainer-inline">
             <div className="flexcontainer-block flex-6 info-block normal-fa-fonts ">
-              <div className="info-text">{this.props.current_score}</div>
               <div className="info-text">
                 <FontAwesomeIcon icon="star" />
               </div>
+              <div className="info-text">{this.props.current_score}</div>
             </div>
             <div className="flexcontainer-block flex-6 info-block normal-fa-fonts ">
-              <div className="info-text">
-                {this.props.timeout - this.props.time_spent}
-              </div>
               <div className="info-text">
                 <FontAwesomeIcon icon="hourglass-start" />
               </div>
+              <div className="info-text">
+                {this.props.timeout - this.props.time_spent}
+              </div>
             </div>
             <div className="flexcontainer-block flex-6 info-block normal-fa-fonts ">
-              <div className="info-text">
-                {Math.pow(2, this.props.correct_answers)}
-              </div>
               <div className="info-text">
                 <FontAwesomeIcon icon="level-up-alt" />
               </div>
+              <div className="info-text">
+                {Math.pow(2, this.props.correct_answers)}
+              </div>
             </div>
             <div className="flexcontainer-block flex-6 info-block normal-fa-fonts ">
-              <div className="info-text">{this.props.highscore}</div>
               <div className="info-text">
                 <FontAwesomeIcon icon="trophy" />
               </div>
+              <div className="info-text">{this.props.highscore}</div>
             </div>
           </div>
         </div>
@@ -113,5 +118,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { updateQuizProperty }
+  { updateQuizProperty, endTheQuiz }
 )(QuizInformation);

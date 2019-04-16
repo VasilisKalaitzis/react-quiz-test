@@ -8,6 +8,8 @@ import "./css/App.css";
 import "./css/Base.css";
 import "./css/transitions.css";
 import "./css/fonts.css";
+import "./css/DialogBox.css";
+import "./css/QuizHandler.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faStar,

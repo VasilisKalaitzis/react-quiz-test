@@ -15,6 +15,7 @@ const puzzleHandler = {
   current_score: 0,
   timeout: 30,
   time_spent: 0,
+  highscore: 0,
   url: "http://jservice.io/api/random",
   cached_questions: {},
   assistant: {
