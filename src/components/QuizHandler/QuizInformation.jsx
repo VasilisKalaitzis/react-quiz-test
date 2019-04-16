@@ -29,7 +29,7 @@ class QuizInformation extends Component {
       let newTimeSpent = this.props.time_spent + 1;
       this.props.updateQuizProperty("time_spent", newTimeSpent);
     } else {
-      // this.props.endTheQuiz("defeat", "Game over! <br> You ran out of time!");
+      this.props.endTheQuiz("defeat", "Game over! <br> You ran out of time!");
     }
     this.countdown = setTimeout(() => this.handleTimer(), 1000);
   }
