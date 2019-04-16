@@ -75,7 +75,9 @@ class DialogBox extends Component {
           {this.props.body !== undefined
             ? this.props.body.map(row => {
                 return (
-                  <li key={"dialog_body_" + row.text}>{this.renderRow(row)}</li>
+                  <li className="no-style" key={"dialog_body_" + row.text}>
+                    {this.renderRow(row)}
+                  </li>
                 );
               })
             : null}

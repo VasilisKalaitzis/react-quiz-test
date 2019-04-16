@@ -31,6 +31,9 @@
 }
 .main-container {
   grid-area: content;
+  // for firefox
+  height: 100vh;
+  // for chrome
   height: -webkit-fill-available;
   overflow-y: auto;
 }

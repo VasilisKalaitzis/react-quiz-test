@@ -21,7 +21,8 @@ const puzzleHandler = {
   assistant: {
     visibility: 1,
     roaming: 0,
-    position: { top: "60%", left: "40%" },
+    positionTop: "60%",
+    positionLeft: "40%",
     tips: null,
     persistent_tips: "Click on me to <b> start the game </b>"
   }

@@ -83,7 +83,10 @@ class Assistant extends Component {
         <div
           className="cubic"
           ref={c => (this.cubic = c)}
-          style={this.props.info.position}
+          style={{
+            top: this.props.info.positionTop,
+            left: this.props.info.positionLeft
+          }}
           onClick={() => onTickle(this.props.feedback)}
         >
           <div className="cubic-grid">
@@ -111,12 +114,26 @@ class Assistant extends Component {
 
     this.cubicTimeline = new TimelineMax({
       onComplete: () =>
-        roaming === 1 ? this.cubicMovement() : (this.cubicTimeline = null)
+        roaming === 1 ? this.cubicMovement() : this.resetPosition()
     });
 
     this.cubicTimeline.to(cubic, 1.5, {
       top: this.randomHeight(cubicContainer),
       left: this.randomWidth(cubicContainer),
+      ease: "Back.easeOut"
+    });
+  }
+
+  resetPosition() {
+    const { positionTop, positionLeft } = this.props.info;
+    const { cubicContainer, cubic } = this;
+
+    this.cubicTimeline = new TimelineMax({
+      onComplete: () => (this.cubicTimeline = null)
+    });
+    this.cubicTimeline.to(cubic, 1, {
+      top: positionTop,
+      left: positionLeft,
       ease: "Back.easeOut"
     });
   }

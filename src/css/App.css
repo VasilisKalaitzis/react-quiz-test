@@ -78,4 +78,8 @@ a {
 ul {
   padding: 5px 0px;
 }
+
+li {
+  list-style-type: none;
+}
 /*# sourceMappingURL=App.css.map */

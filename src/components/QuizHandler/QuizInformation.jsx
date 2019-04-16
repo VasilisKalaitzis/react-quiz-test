@@ -19,6 +19,7 @@ class QuizInformation extends Component {
     this.stopTimer();
   }
 
+  // countdown
   handleTimer() {
     // every 1 second check and update count
     if (
